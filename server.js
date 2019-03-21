@@ -7,9 +7,15 @@ var cheerio = require("cheerio");
 var db = require("./models");
 var PORT = 3000;
 var app = express();
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytimes";
+// "mongodb://heroku_xt011v1w:password123456789@ds121026.mlab.com:21026/heroku_xt011v1w";
+//                                              //MONGOLAB_URI=mongodb://example:example@ds053312.mongolab.com:53312/todolist
+// mongoose.connect(MONGODB_URI);
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, function (error) {
+  if (error) console.error(error);
+  else console.log('mongo connected');
+});
 
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));

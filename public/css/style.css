@@ -1,42 +1,42 @@
 html { 
-    background: url("../images/newspaper.jpg") no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
+  background: url("../images/newspaper.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
-   
+ 
 #wrapper {
-  width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 5%;
-  
+width: 960px;
+margin-left: auto;
+margin-right: auto;
+padding-top: 5%;
+
 }
 #articles {
-  display: inline-block;
-  overflow: auto;
-  width: 60%;
-  height: 700px;
-  background-color: white;
-  text-align: center; 
-  
+display: inline-block;
+overflow: auto;
+width: 60%;
+height: 700px;
+background-color: white;
+text-align: center; 
+
 }
 #notes {
-  float: right;
-  width: 30%;
+float: right;
+width: 30%;
 }
 textarea, input {
-  display: block;
-  width: 100%;
-  background-color: #FCF5C7;
+display: block;
+width: 100%;
+background-color: white;
 }
 input {
-  height: 36px;
-  font-size: 24px;
+height: 36px;
+font-size: 24px;
 }
 textarea {
-  height: 200px;
-  font-size: 18px;
+height: 200px;
+font-size: 18px;
 }

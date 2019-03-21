@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,22 +12,38 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="app.js"></script>
 </head>
+
 <body>
-    <nav class="nav-extended"> 
+    <nav class="nav-extended">
         <div class="nav-content">
-           <ul class="tabs tabs-fixed-width tab-demo z-depth-1 right hide-on-med-and-down">
-              <li class="tab"><a href="notes" id="notes">Saved Articles</a></li>
-              <li class="tab"><a href="scrape">Scrape New Articles</a></li>
-              <li class="tab"><a href="clear" id="clear">Clear Articles</a></li>
-           </ul>
+            <ul class="tabs tabs-fixed-width tab-demo z-depth-1 right hide-on-med-and-down">
+                <li class="tab"><a href="notes" id="saved">Saved Articles</a></li>
+                <li class="tab"><a href="scrape" id="scrape">Scrape New Articles</a></li>
+                <li class="tab"><a href="clear" id="clear">Clear Articles</a></li>
+            </ul>
         </div>
-     </nav>
-    <div id="wrapper">
-        <div id="articles"></div>
-        <div id="notes"></div>
-      </div>
-     
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </nav>
+    <!-- <div id="wrapper"> -->
+    <div className="main-container">
+        <div className="container">
+            <div className="jumbotron">
+                <div id="articles"></div>
+                <div id="notes"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>
+
+<!-- <div className="card mb-4">
+        <div className="card-header">
+          <h3>Card title</h3>
+        </div>
+        <div className="card-body">
+          <p className="card-text">Card content</p>
+        </div>
+      </div> -->

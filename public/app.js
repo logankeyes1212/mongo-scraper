@@ -1,11 +1,13 @@
 $(document).ready(function () {
+    // scrape()
+    function scrape(){
     $.getJSON("/articles", function (data) {
         for (var i = 0; i < data.length; i++) {
             $("#articles").append("<p>" + data[i].title + "</br>" + data[i].link + "</br>" + data[i].summary + "</p>"
                 + "<button type='submit' class ='addNote' data-id='" + data[i]._id + "'>Add Note</button><hr>")
         }
     });
-
+    }
     // add notes 
     $(document).on("click", ".addNote", function () {
         // console.log("works")
@@ -19,7 +21,7 @@ $(document).ready(function () {
         })
             .then(function (data) {
                 console.log("data ", data);
-                $("#notes").append("<h2>" + data[0].title + "</h2>");
+                $("#notes").append("<h5>" + data[0].title + "</h5>");
                 $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
                 $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
@@ -52,15 +54,18 @@ $(document).ready(function () {
         event.preventDefault();
         $("#articles").empty()
     })
-
+    $(document).on("click", "#scrape", function(){
+       event.preventDefault();
+        scrape()
+    });
     //   saved articles 
-    $(document).on("click", "#notes", function () {
+    $(document).on("click", "#saved", function () {
        event.preventDefault();
         $("#articles").empty()
         $.getJSON("/notes", function (data) {
+            console.log(data)
             for (var i = 0; i < data.length; i++) {
-                $("#articles").append("<p>" + data[i].title + "</br>" + data[i].link + "</br>" + data[i].summary + "</p>"
-                    + "<button type='submit' class ='addNote' data-id='" + data[i]._id + "'>Add Note</button><hr>")
+                $("#articles").append("<p>" + data[i].notes + "</br>" + data[i].link + "</br>" + data[i].summary + "</p><hr>")
             }
         });
     });
