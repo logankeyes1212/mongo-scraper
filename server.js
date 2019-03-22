@@ -7,25 +7,24 @@ var cheerio = require("cheerio");
 var db = require("./models");
 var PORT = 3000;
 var app = express();
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytimes";
-// "mongodb://heroku_xt011v1w:password123456789@ds121026.mlab.com:21026/heroku_xt011v1w";
-//                                              //MONGOLAB_URI=mongodb://example:example@ds053312.mongolab.com:53312/todolist
-// mongoose.connect(MONGODB_URI);
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_xt011v1w:password123456789@ds121026.mlab.com:21026/heroku_xt011v1w";
+// //                                              //MONGOLAB_URI=mongodb://example:example@ds053312.mongolab.com:53312/todolist
+// // mongoose.connect(MONGODB_URI);
 
-mongoose.connect(MONGODB_URI, function (error) {
-  if (error) console.error(error);
-  else console.log('mongo connected');
-});
+// mongoose.connect(MONGODB_URI, function (error) {
+//   if (error) console.error(error);
+//   else console.log('mongo connected');
+// });
 
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-// mongoose.connect("mongodb://localhost/nytimes", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/nytimes", { useNewUrlParser: true });
 
 app.get("/scrape", function (req, res) {
   db.Article.remove({}, function (err, data) {
-    axios.get("https://www.nytimes.com").then(function (response) {
+    axios.get("https://www.nytimes.com/section/politics").then(function (response) {
       // console.log(response.data)
       var $ = cheerio.load(response.data);
       //starting path for scraping info
@@ -34,13 +33,16 @@ app.get("/scrape", function (req, res) {
         var result = {};
         //grabs the headlines, link and summary from nytimes
         result.title = $(this)
-          .find("h2")
+          .find("h2").find("a")
           .text();
         result.link = $(this) //does not work
-          .children("a")
+          .find("div.css-1dqkjed").find("a")
           .attr("href");
+          if( $(this).find("div.css-1dqkjed").find("a").attr("href") === "undefined"){
+            $(this).text("This links does not")
+          }
         result.summary = $(this)
-          .find(".css-1rrs2s3").find("li")
+          .find("p")
           .text();
         // console.log(result)
 
