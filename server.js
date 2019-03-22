@@ -2,16 +2,20 @@ var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var path = require("path");
+var router = express.Router();
 var axios = require("axios");
 var cheerio = require("cheerio");
 var db = require("./models");
+var MongoClient = require('mongodb').MongoClient
+
 var PORT = 3000;
 var app = express();
 // var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_xt011v1w:password123456789@ds121026.mlab.com:21026/heroku_xt011v1w";
 // mongoose.connect(MONGODB_URI);
-var MONGODB_URI = process.env.MONGODB_URI || ("mongodb://localhost/nytimes", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytimes";
 
 mongoose.connect(MONGODB_URI);
+
 
 // mongoose.connect(MONGODB_URI, function (error) {
 //   if (error) console.error(error);
