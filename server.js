@@ -51,7 +51,7 @@ app.use(express.json());
 app.use(express.static("public"));
 // mongoose.connect("mongodb://localhost/nytimes", { useNewUrlParser: true });
 
-app.get("/scrape", function (req, res) {
+app.get("/", function (req, res) {
   db.Article.remove({}, function (err, data) {
     axios.get("https://www.nytimes.com/section/politics").then(function (response) {
       // console.log(response.data)
@@ -127,7 +127,7 @@ app.post("/articles/:id", function(req, res) {
     .then(dbArticle => res.json(dbArticle))
     .catch( err => res.json(500, err))
   });
-app.get("/index", function (req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/index.html"))
 })
 
