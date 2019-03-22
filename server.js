@@ -9,9 +9,24 @@ var PORT = 3000;
 var app = express();
 // var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_xt011v1w:password123456789@ds121026.mlab.com:21026/heroku_xt011v1w";
 // mongoose.connect(MONGODB_URI);
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytimes";
+// var MONGODB_URI = process.env.MONGODB_URI || ("mongodb://localhost/nytimes", { useNewUrlParser: true });
 
-mongoose.connect(MONGODB_URI);
+// mongoose.connect(MONGODB_URI);
+const { MongoClient } = require("mongodb");
+const uri = 'mongodb://localhost:nytimes';  // mongodb://localhost - will fail
+
+(async function() {
+  try {
+
+    const client = await MongoClient.connect(uri,{ useNewUrlParser: true });
+    // ... anything
+
+    client.close();
+  } catch(e) {
+    console.error(e)
+  }
+
+})()
 
 // mongoose.connect(MONGODB_URI, function (error) {
 //   if (error) console.error(error);
@@ -22,7 +37,7 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-mongoose.connect("mongodb://localhost/nytimes", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/nytimes", { useNewUrlParser: true });
 
 app.get("/scrape", function (req, res) {
   db.Article.remove({}, function (err, data) {
