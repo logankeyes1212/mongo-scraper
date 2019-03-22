@@ -7,7 +7,8 @@ var cheerio = require("cheerio");
 var db = require("./models");
 var MongoClient = require('mongodb').MongoClient
 var mongodb = require('mongodb');
-var PORT = 3000;
+
+var PORT = 8080;
 var app = express();
 // var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_xt011v1w:password123456789@ds121026.mlab.com:21026/heroku_xt011v1w";
 // mongoose.connect(MONGODB_URI);
@@ -51,7 +52,7 @@ app.use(express.json());
 app.use(express.static("public"));
 // mongoose.connect("mongodb://localhost/nytimes", { useNewUrlParser: true });
 
-app.get("/", function (req, res) {
+app.get("/scrape", function (req, res) {
   db.Article.remove({}, function (err, data) {
     axios.get("https://www.nytimes.com/section/politics").then(function (response) {
       // console.log(response.data)
