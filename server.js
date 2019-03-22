@@ -17,8 +17,8 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytimes";
 mongoose.connect(MONGODB_URI);
 
 
-// mongoose.connect(MONGODB_URI, function (error) {
-//   if (error) console.error(error);
+// mongoose.connect(MONGODB_URI, function (err) {
+//   if (err) console.error(err);
 //   else console.log('mongo connected');
 // });
 
