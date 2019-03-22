@@ -12,8 +12,8 @@ var app = express();
 // var MONGODB_URI = process.env.MONGODB_URI || ("mongodb://localhost/nytimes", { useNewUrlParser: true });
 
 // mongoose.connect(MONGODB_URI);
-const { MongoClient } = require("mongodb");
-const uri = 'mongodb://localhost:nytimes';  // mongodb://localhost - will fail
+const  MongoClient  = require("mongodb");
+const uri = ('mongodb://localhost:nytimes');  // mongodb://localhost - will fail
 
 (async function() {
   try {
