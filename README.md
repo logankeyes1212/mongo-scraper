@@ -1,2 +1,2 @@
 # mongo-scraper
-Welcome to a NY Times article scraper. 111
+Welcome to a NY Times article scraper full-stack app. Just click scrape new article to have a list of current articles show up. You are also able to add notes to the articles you can refer to at a later date. Once done you can clear the article results and check back later for new articles.
