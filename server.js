@@ -8,7 +8,7 @@ var db = require("./models");
 var MongoClient = require('mongodb').MongoClient
 var mongodb = require('mongodb');
 
-var PORT = 8080;
+var PORT = 3000;
 var app = express();
 // var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_xt011v1w:password123456789@ds121026.mlab.com:21026/heroku_xt011v1w";
 // mongoose.connect(MONGODB_URI);
@@ -144,9 +144,11 @@ app.get("/notes", function (req, res) {
   });
   // console.log(req)
 });
-
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 
 // Start server
-app.listen(PORT, function () {
-  console.log("App running on port " + PORT);
-});
+// app.listen(PORT, function () {
+//   console.log("App running on port " + PORT);
+// });
